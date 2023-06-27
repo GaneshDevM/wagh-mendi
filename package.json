@@ -1,0 +1,19 @@
+{
+  "name": "wagh-mendi",
+  "version": "1.0.0",
+  "description": "simple game for fun",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaneshDevM/wagh-mendi.git"
+  },
+  "author": "Ganesh Mundkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaneshDevM/wagh-mendi/issues"
+  },
+  "homepage": "https://github.com/GaneshDevM/wagh-mendi#readme"
+}
