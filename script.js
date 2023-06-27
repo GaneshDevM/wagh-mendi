@@ -227,3 +227,30 @@ function getPossiblemoves(image) {
         }
     }
 } 
+
+let heading3 = document.querySelector('.info-game h3')
+
+heading3.addEventListener("click", function(e){
+    
+    let elm = document.querySelector(".info-game ol")
+    if (!elm.checkVisibility()) {
+        elm.style.display = "inline-block"
+        elm.style.backgroundColor="#E0E0E0"
+        elm.style.color="black"
+        heading3.lastChild.remove()
+        heading3.append(" Close Rules ^")
+
+        if(window.screen.availWidth<=940){
+            document.querySelector("#grid-div").style.display = "none"
+            document.querySelector(".placeholders").style.display="none"    
+        }
+    }else{
+        heading3.lastChild.remove()
+        heading3.append(" See Rules >")
+        elm.style.display = "none"
+        if(window.screen.availWidth<=940){
+            document.querySelector("#grid-div").style.display = "grid"
+            document.querySelector(".placeholders").style.display="block"
+        }
+    }
+})

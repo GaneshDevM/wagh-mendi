@@ -11,6 +11,40 @@
 
 <body>
     <h1 id="game-title">Wagh-Mendi Game <button id="start-btn">Start Game</button></h1>
+    
+    <div class="display">
+        <img src="images/wagh.jpg" width="38px">
+    </div>
+
+
+    <div class="display">
+        <img src="images/mendi.jpg" width="38px">
+        <div class="mendi-score" style="float:right; align-content: center;">Remaining-16<br>dead-0</div>
+    </div>    
+
+    <div class="info-game">
+        <h3>Click to See Rules ></h3>
+        <ol>
+            <li>press start game button to start the game</li>
+            <li> click on any piece to move</li>
+            <li> Wait for your turn </li>
+            <li>there are 2 tigers vs 24 sheeps</li>
+            <li> at first its turn of player who has chosen tigers side</li>
+            <li> for first time, both tigers must be moved else only one can move</li>
+            <li> sheeps can't kill or eat tigers they can only defence other sheeps
+                by putting themselves behind other sheeps in line of attack of tiger</li>
+            <li> tiger can kill a lone sheep just in front of or side of it by moving
+                itself to a blank space ahead of that sheep
+            </li>
+            <li> at starting only 8 of the sheeps are placed </li>
+            <li> at turn of sheeps you have to put new sheeps till its all over in the field</li>
+            <li>when there is no move left for tiger then ship wins or if all sheeps are dead then tiger wins</li>
+        </ol>
+    </div>
+
+
+     
+
     <div id="grid-div">
         <div id="bx-1-1" class="row-1 column-1">
             <div class="left-diagonal"></div>
@@ -149,34 +183,7 @@
     </div>
 
 
-    <div class="display" style="width:150px; float:right;margin-right: 25px;">
-        <div style="display: inline-block;"><img src="images/mendi.jpg" width="38px"></div>
-        <div class="mendi-score" style="float:right; align-content: center;">Remaining-16<br>dead-0</div>
-    </div>
-
-    <div class="display" style="width:150px; float:left; margin-left:25px">
-        <div style="display: inline-block;"><img src="images/wagh.jpg" width="38px"></div>
-    </div>
-
-    <div class="info-game">
-        <h3>Rules</h3>
-        <ol>
-            <li>press start game button to start the game</li>
-            <li> click on any piece to move</li>
-            <li> Wait for your turn </li>
-            <li>there are 2 tigers vs 24 sheeps</li>
-            <li> at first its turn of player who has chosen tigers side</li>
-            <li> for first time, both tigers must be moved else only one can move</li>
-            <li> sheeps can't kill or eat tigers they can only defence other sheeps
-                by putting themselves behind other sheeps in line of attack of tiger</li>
-            <li> tiger can kill a lone sheep just in front of or side of it by moving
-                itself to a blank space ahead of that sheep
-            </li>
-            <li> at starting only 8 of the sheeps are placed </li>
-            <li> at turn of sheeps you have to put new sheeps till its all over in the field</li>
-            <li>when there is no move left for tiger then ship wins or if all sheeps are dead then tiger wins</li>
-        </ol>
-    </div>
+  
 
     <script src="script.js"></script>
 </body>
