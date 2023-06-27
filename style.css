@@ -1,0 +1,178 @@
+#game-title{
+    text-indent: 50px;
+    color: rgb(137, 166, 63);
+    font-style: italic;
+    font-variant: small-caps;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+#grid-div{
+    position: absolute;
+    left: 485px;
+    top: 105px;
+    width: 406px;
+    height:574px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    z-index: -1;
+}
+
+#grid-div > div{
+    width: 100px;
+    height:70px;
+}
+
+.row-1,.row-2.column-2,.row-2.column-3,.row-3,.row-4,.row-5,.row-6,.row-7{
+    border-top: 2px black solid;
+}
+
+.row-8 ,.row-7.column-2,.row-7.column-3{
+    border-bottom: 2px black solid;
+}
+
+.row-3.column-1,.row-4.column-1,.row-5.column-1,.row-6.column-1,
+.row-3.column-2,.row-4.column-2,.row-5.column-2,.row-6.column-2,
+.row-3.column-3,.row-4.column-3,.row-5.column-3,.row-6.column-3,
+.row-3.column-4,.row-4.column-4,.row-5.column-4,.row-6.column-4{
+    border-left: 2px black solid;
+}
+
+.row-3.column-4,.row-4.column-4,.row-5.column-4,.row-6.column-4,
+.row-1.column-2,.row-2.column-2,
+.row-8.column-2,.row-8.column-2,
+.row-7.column-2
+{
+    border-right: 2px black solid;
+}
+
+.left-diagonal{
+    position: relative;
+    top: 35px;
+    left: -10px;
+    width:122px;
+    height:2px;
+    background-color: black;
+    transform: rotate(35deg);
+}
+
+.right-diagonal{
+    position: relative;
+    top: 35px;
+    left: -11px;
+    width:122px;
+    height:2px;
+    background-color: black;
+    transform: rotate(-35deg);
+}
+
+/* #wagh1{
+    position: relative;
+    top:50px;
+    left:75px;
+}
+
+#wagh2{
+    position: relative;
+    top:50px;
+    left:25px;
+}
+
+.mendi{
+    position: relative;
+    top:40px;
+    left:78px;
+} */
+
+
+
+
+.first-row > div{
+    display:inline-block;
+    margin-top: 10px;
+    width: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.first-row > :first-child{
+    left: 275px;
+}
+
+.first-row > :nth-child(2){
+    left: 452px;
+}
+
+.first-row > :last-child{
+    left: 622px;;
+}
+
+.second-row > div{
+    display:inline-block;
+    margin-top: 42px;
+    width: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.second-row > :first-child{
+    left: 365px;
+}
+
+.second-row > :nth-child(2){
+    left: 450px;
+}
+
+.second-row > :last-child{
+    left: 525px;
+}
+
+.down-block{
+    position: relative;
+    top: -30px;
+}
+
+.square{
+    position: relative;
+    top: 32px;
+}
+.square .r1,.square .r2,.square .r3,.square .r4,.square .r5 {
+    display: flex;
+    padding: 15px;
+    margin-left: 260px;
+}
+
+.r1 > div,.r2 > div,.r3 > div,.r4 > div,.r5 > div {
+    padding-right: 78px;
+} 
+
+
+.r3,.r4,.r5{
+  margin-top: 5px;  
+}
+
+
+.down-block{
+    position: relative;
+    top: 30px;
+}
+
+.down-block > .first-row{
+    margin-top: 15px;
+}
+
+.placeholders{
+    margin-left: 190px;
+}
+
+.info-game{
+    display: flex;
+    z-index: -2;
+    position: absolute;
+    top:150px;
+    left:50px;
+    width: 300px;
+    text-align: justify;
+}
