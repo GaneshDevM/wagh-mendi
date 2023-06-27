@@ -204,8 +204,8 @@
 }
 .display{
     display: inline-block;
-    margin-left:55px;
-    margin-right: 50px;
+    margin-left:15px;
+    margin-right: 15px;
 }
 
 
@@ -233,7 +233,11 @@
         margin-bottom: 30px;
     }
 
-    .display:nth-child(2){
-       margin-left: 100px;
+    .display{
+       margin-left: 10px;
+    }
+
+    body{
+        box-sizing: border-box;
     }
 }
