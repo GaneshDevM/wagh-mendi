@@ -12,5 +12,5 @@ app.listen(3000,function (){
 })
 
 app.get("/about", (req, res)=>{
-   res.send(<h1>created by Ganesh Mundkar</h1>)
+   res.send('<h1>created by Ganesh Mundkar</h1>')
 })
