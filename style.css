@@ -210,7 +210,7 @@
 
 
 
-@media screen and (max-width:940px){
+@media screen and (max-width:940px) and (min-width:376px){
     #game-title{
         text-indent: 10px;
         color: rgb(72, 13, 72);
@@ -236,8 +236,41 @@
     .display{
        margin-left: 10px;
     }
+    
+    h1{
+       font-size: 34px; 
+    }
+}
 
-    body{
-        box-sizing: border-box;
+
+@media screen and (max-width:376px){
+    #game-title{
+        text-indent: 10px;
+        color: rgb(72, 13, 72);
+        font-style: italic;
+        font-variant: small-caps;
+        font-family: 'Courier New', Courier, monospace;
+    } 
+    #grid-div{
+        position: absolute;
+        left: 55px;
+        top: 255px;
+        width: 406px;
+        height:574px;
+    }
+
+    .placeholders{
+        display: float;
+        margin-left: -240px;
+        margin-top: -360px;
+        margin-bottom: 30px;
+    }
+
+    .display{
+       margin-left: 10px;
+    }
+    
+    h1{
+       font-size: 30px; 
     }
 }

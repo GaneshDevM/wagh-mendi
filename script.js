@@ -240,7 +240,7 @@ heading3.addEventListener("click", function(e){
         heading3.lastChild.remove()
         heading3.append(" Close Rules ^")
 
-        if(window.screen.availWidth<=940){
+        if(window.screen.width<=940){
             document.querySelector("#grid-div").style.display = "none"
             document.querySelector(".placeholders").style.display="none"    
         }
@@ -248,7 +248,7 @@ heading3.addEventListener("click", function(e){
         heading3.lastChild.remove()
         heading3.append(" See Rules >")
         elm.style.display = "none"
-        if(window.screen.availWidth<=940){
+        if(window.screen.width<=940){
             document.querySelector("#grid-div").style.display = "grid"
             document.querySelector(".placeholders").style.display="block"
         }
