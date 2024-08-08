@@ -86,12 +86,13 @@ for (let i = 0; i < images.length; i++) {
             else if (!selected && images[i].src.indexOf(turn) !== -1) {
                 selected_src = images[i].src
                 selected_img = images[i]
-                images[i].style.border = "1px solid yellow"
+                images[i].style.outline = "3px solid yellow"
                 if(turn===m || wagh_bari>=1){
                     images[i].src = blank_src
                 }
                 selected = true
                 getPossiblemoves(images[i])
+                display()
             } else if (selected && images[i].src.indexOf(blank_src) !== -1 && selected_img != images[i]) {
                 // check if curr position is in possible moves
                 if (possible_moves.indexOf(images[i].id) > -1) {
@@ -101,27 +102,31 @@ for (let i = 0; i < images.length; i++) {
                         document.getElementsByClassName("mendi-score")[0].innerHTML = "Remaining-" + remaining + "<br>dead-" + dead
                     }
                     for (let i = 0; i < possible_moves.length; i++) {
-                        document.getElementById(possible_moves[i]).style.border = "none"
+                        document.getElementById(possible_moves[i]).style.outline = "none"
                     }
-                    possible_moves = []
-                    killer_moves = {}
+                    
+                    
                     images[i].src = selected_src
-                    selected_img.style.border = "none"
+                    selected_img.style.outline = "none"
                     wagh_bari=wagh_bari + 1
                     if(wagh_bari>=2 || turn===m){
                         if (turn === "wagh.") turn = "mendi."
                         else turn = "wagh."    
                     }
                     selected = false
+                }else{
+                    selected_img.src=selected_src
+                    selected=false
                 }
+                clear()
 
             } else {
                 if (selected) {
                     for (let i = 0; i < possible_moves.length; i++) {
-                        document.getElementById(possible_moves[i]).style.border = "none"
+                        document.getElementById(possible_moves[i]).style.outline = "none"
                     }
-                    possible_moves = []
-                    killer_moves = {}
+                    clear()
+                    
                     selected_img.src = selected_src
                     selected_img.style.border = "none"
                     selected = false
@@ -142,12 +147,11 @@ function resetPlayground() {
         else if (images[i].id.match("i-[2-4]-[2-4]")) {
             images[i].src = mendi_src
         }
-        images[i].style.border = "none"
+        images[i].style.outline = "none"
     }
     started = true
     turn = w
-    possible_moves = []
-    killer_moves = {}
+    clear()
     remaining = 16
     selected = false
     selected_src=" "
@@ -169,13 +173,13 @@ function getPossiblemoves(image) {
 
         if (curr_img.src.indexOf(blank_src) !== -1) {
             possible_moves.push(arr[i])
-            document.getElementById(arr[i]).style.border = "1px solid green"
+            // document.getElementById(arr[i]).style.outline = "3px solid green"
         }
          else {
             if (turn === w && curr_img.src.indexOf(wagh_src) === -1) {
                 if((org_id==="i-5-3" || org_id==="i-1-3") && curr_img_row==2 && curr_img.id[0]!="i"){
                     possible_moves.push(curr_img.id[0] + "-" +(parseInt(curr_img_row)-1).toString() + "-" + curr_img_col)
-                    document.getElementById(curr_img.id[0] + "-" +(parseInt(curr_img_row)-1).toString() + "-" + curr_img_col).style.border = "1px solid red"
+                    // document.getElementById(curr_img.id[0] + "-" +(parseInt(curr_img_row)-1).toString() + "-" + curr_img_col).style.outline = "3px solid red"
                     killer_moves[curr_img.id[0] + "-" +(parseInt(curr_img_row)-1).toString() + "-" + curr_img_col] = curr_img.id
                 }
                 let rd = parseInt(org_row) - parseInt(curr_img_row)
@@ -183,40 +187,40 @@ function getPossiblemoves(image) {
                 let cd = parseInt(org_col) - parseInt(curr_img_col)
                 let nc = parseInt(curr_img_col) - cd
                 if (document.getElementById(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10))) {
-                    possible_moves.push(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10))
                     if (document.getElementById(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10)).src.indexOf(blank_src) !== -1) {
-                        document.getElementById(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10)).style.border = "1px solid red"
+                        possible_moves.push(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10))
+                        // document.getElementById(curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10)).style.outline = "3px solid red"
                     }
                     killer_moves[curr_img.id[0] + "-" + nr.toString(10) + "-" + nc.toString(10)] = curr_img.id
                 } else {
                     if(curr_img.id==="i-1-3" || curr_img.id==="i-5-3"){
                         if (org_id[0] === 'i') {
                             if (nr.toString(10) > 5) {
-                                possible_moves.push("d-" + 2 + "-" + (nc - 1).toString(10))
                                 if(document.getElementById("d-" + 2 + "-" + (nc - 1).toString(10)).src.indexOf(blank_src) !== -1){
-                                    document.getElementById("d-" + 2 + "-" + (nc - 1).toString(10)).style.border = "1px solid red"
+                                    possible_moves.push("d-" + 2 + "-" + (nc - 1).toString(10))
+                                    // document.getElementById("d-" + 2 + "-" + (nc - 1).toString(10)).style.outline = "3px solid red"
                                 }
                                 killer_moves["d-" + 2 + "-" + (nc - 1).toString(10)] = curr_img.id
                             }
                             if (nr.toString(10) < 1) {
-                                possible_moves.push("u-" + 2 + "-" + (nc - 1).toString(10))
                                 if(document.getElementById("u-" + 2 + "-" + (nc - 1).toString(10)).src.indexOf(blank_src) !== -1){
-                                    document.getElementById("u-" + 2 + "-" + (nc - 1).toString(10)).style.border = "1px solid red"
+                                    possible_moves.push("u-" + 2 + "-" + (nc - 1).toString(10))
+                                    // document.getElementById("u-" + 2 + "-" + (nc - 1).toString(10)).style.outline = "3px solid red"
                                 }
                                 killer_moves["u-" + 2 + "-" + (nc - 1).toString(10)] = curr_img.id
                             }
                         } else {
                             if (nr.toString(10) > 5) {
-                                possible_moves.push("i-" + 4 + "-" + (nc - 1).toString(10))
                                 if(document.getElementById("i-" + 4 + "-" + (nc - 1).toString(10)).src.indexOf(blank_src)!==-1){
-                                    document.getElementById("i-" + 4 + "-" + (nc - 1).toString(10)).style.border = "1px solid red"
+                                    possible_moves.push("i-" + 4 + "-" + (nc - 1).toString(10))
+                                    // document.getElementById("i-" + 4 + "-" + (nc - 1).toString(10)).style.outline = "3px solid red"
                                 }
                                 killer_moves["i-" + 4 + "-" + (nc - 1).toString(10)] = curr_img.id
                             }
                             if (nr.toString(10) < 1) {
-                                possible_moves.push("i-" + 2 + "-" + (nc - 1).toString(10))
                                 if(document.getElementById("i-" + 2 + "-" + (nc - 1).toString(10)).src.indexOf(blank_src)!==-1){
-                                    document.getElementById("i-" + 2 + "-" + (nc - 1).toString(10)).style.border = "1px solid red"
+                                    possible_moves.push("i-" + 2 + "-" + (nc - 1).toString(10))
+                                    // document.getElementById("i-" + 2 + "-" + (nc - 1).toString(10)).style.outline = "3px solid red"
                                 }
                                 killer_moves["i-" + 2 + "-" + (nc - 1).toString(10)] = curr_img.id
                             }
@@ -228,29 +232,51 @@ function getPossiblemoves(image) {
     }
 } 
 
-let heading3 = document.querySelector('.info-game h3')
 
-heading3.addEventListener("click", function(e){
-    
-    let elm = document.querySelector(".info-game ol")
-    if (!elm.checkVisibility()) {
-        elm.style.display = "inline-block"
-        elm.style.backgroundColor="#E0E0E0"
-        elm.style.color="black"
-        heading3.lastChild.remove()
-        heading3.append(" Close Rules ^")
-
-        if(window.screen.width<=940){
-            document.querySelector("#grid-div").style.display = "none"
-            document.querySelector(".placeholders").style.display="none"    
-        }
-    }else{
-        heading3.lastChild.remove()
-        heading3.append(" See Rules >")
-        elm.style.display = "none"
-        if(window.screen.width<=940){
-            document.querySelector("#grid-div").style.display = "grid"
-            document.querySelector(".placeholders").style.display="block"
-        }
+function display(){
+    for(let i=0;i<possible_moves.length;i++){
+        // console.log(possible_moves[i])
+        document.getElementById(possible_moves[i]).style.outline = "3px solid green"
     }
-})
+    for(a in killer_moves){
+        if(document.getElementById(a).src.indexOf(blank_src) !== -1)
+        document.getElementById(a).style.outline = "3px solid red"
+    }
+}
+
+function clear(){
+    for (let i = 0; i < images.length; i++) {
+        images[i].style.outline = "none"
+    }
+    possible_moves = []
+    killer_moves = {}
+}
+
+
+let heading3 = document.querySelector('.info-game h3');
+
+heading3.addEventListener("click", function(e) {
+    let elm = document.querySelector(".info-game ol");
+    
+    if (window.getComputedStyle(elm).display === "none") {
+        elm.style.display = "block";
+        elm.style.backgroundColor = "#E0E0E0";
+        elm.style.color = "black";
+        heading3.textContent = "Close Rules ^";
+        elm.style.zIndex='2'
+        
+    } else {
+        heading3.textContent = "See Rules <";
+        elm.style.display = "none";
+        elm.style.zIndex='-2'
+        elm.style.position='static'
+    }
+});
+
+
+
+
+
+let checkWinner = () =>{
+    possible_moves()
+}
